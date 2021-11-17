@@ -1,0 +1,88 @@
+### envio de correo por medio de texto plano
+POST http://lumen_api_gateway.test/notifications/email/text
+Content-Type: application/json
+
+{
+    "from":"el_sorprendente_api_gateway",
+    "to":"alexis.araujo@triara.com,jose.hernandez@triara.com,david.gomez@triara.com",
+    "subject":"Mensaje de prueba",
+    "body":"Mensaje de prueba desde el Api Gateway con Lumen el dia 17/11/2021"
+}
+
+### envio de correo por medio de texto/codigo HTML
+POST http://lumen_api_gateway.test/notifications/email/html
+Content-Type: application/json
+
+{
+    "from":"el_sorprendente_api_gateway",
+    "to":"alexis.araujo@triara.com,jose.hernandez@triara.com,david.gomez@triara.com",
+    "subject":"Mensaje de prueba",
+    "body":"<h1>Mensaje de prueba desde el Api Gateway con Lumen el dia 17/11/2021</h1>"
+}
+
+### envio de SNMP Trap
+POST http://lumen_api_gateway.test/notifications/snmptrap
+Content-Type: application/json
+
+{
+    "group":"Telmex-Exchange",
+    "service":"Correo",
+    "stateid":"2",
+    "severity":"CRITICAL",
+    "description":"[PRUEBA] Prueba Api Gateway con Lumen"
+}
+
+### envio notificacion al ITOC App
+POST http://lumen_api_gateway.test/notifications/phone/app
+Content-Type: application/json
+
+{
+    "node":"Telmex-Exchange",
+    "group":"304",
+    "grouper":"0",
+    "title":"Se detecta falla de prueba con Api Gateway Lumen",
+    "message":"Error: No hay error, solo soy una api gateway."
+}
+
+### Prueba de llamada
+POST http://lumen_api_gateway.test/notifications/phone/call
+Content-Type: application/json
+
+{
+    "tag":"pruebaitoc"
+}
+
+### Prueba estatus api
+GET http://lumen_api_gateway.test/apiservices/login/echoping
+
+### Prueba envio de correo con api David Email con texto plano
+POST http://lumen_api_gateway.test/notificacion/mail/solotexto
+Content-Type: application/json
+
+{
+    "subjetc":  "TEST Prueba de correo desde el API Gateway",
+    "from":  "notificacion itoc",
+    "mensaje":  "Mensaje de prueba desde el Api Gateway con Lumen el dia 17/11/2021",
+    "grupo_envio":  "alexis.araujo@triara.com,jose.hernandez@triara.com,david.gomez@triara.com"
+}
+
+### Prueba envio de correo con api David Email con texto HTML
+POST http://lumen_api_gateway.test/notificacion/mail/avanzado
+Content-Type: application/json
+
+{
+  "subject": "El sorprendente Api Gateway",
+  "cuenta": "notificacion.itoc@triara.com",
+  //"tag": "Alarma Monitoreo ITOC",
+  "body": "<h1>Notificación de prueba desde el Api Gateway con Lumen el dia 17/11/2021</h1>",
+  "contactos": [
+                "alexis.araujo@triara.com", 
+                "jose.hernandez@triara.com",
+                "david.gomez@triara.com"
+                ],
+  "contactos_cc": [
+                "jose.hernandez@triara.com", 
+                "alexis.araujo@triara.com",
+                "david.gomez@triara.com"
+                ]
+}
