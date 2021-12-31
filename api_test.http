@@ -1,6 +1,29 @@
-### envio de correo por medio de texto plano
-POST http://lumen_api_gateway.test/notifications/email/text
+### obtencion del token OATH
+POST http://itoc-gateway.test/oauth/token
 Content-Type: application/json
+
+{
+    "grant_type": "client_credentials",
+    "client_id": "1",
+    "client_secret": "xn5fvCnw4zLRL2boPOjPfr4tmZjmCaqqdOmOitjh"
+}
+
+### prueba de autenticacion con OAUTH y llave secreta
+GET http://itoc-gateway.test/gateway/secret
+Content-Type: application/json
+Authorization: Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiJ9.eyJhdWQiOiIxIiwianRpIjoiODc1YWU0MTY3NDI3ODhjZjBkNmQ0NWI3ZmE5ZjljNjZhMTMwYmQ3Y2UyZGEyNjBmM2Y5OTExMmFiNzkyMjIwN2VhYmIyZTVhYWU2NWFiMzkiLCJpYXQiOjE2NDA5NzEzNjguNzM3NjMxLCJuYmYiOjE2NDA5NzEzNjguNzM3NjM2LCJleHAiOjE2NzI1MDczNjguNzE5MTQzLCJzdWIiOiIiLCJzY29wZXMiOltdfQ.EEjbe-2O5aGGQIrGotvl7Tj5OgLO6Gp5a_TyxPqrwKD_JRibbRAqOU9FfV04KGJRriLXwc-V46l9IXPqwEsXUJhZ9_64683JiidQVTEBF0bvDJSn4X98AZ1Z1AzFlnWjOLrN9pS0aG9w4U6Gjgy2KDwB0sGSH4GnKV1BixxeXaHxwSOUREtxyo1z4MxpbKsam8MZQziqk3-xJdv00ff-pdoy_D5gLTwkIOEQRJF7SIZV3WHcZMSCIDNBfcOR8pLEfm8Nuj5sP3MomOi3w6hSZWiIuJvUaYHPBablrCpCe8dtXfQavft8W9xLmxJPqW975HjNpc0JF8OmWgoCfTr6ah1pr5R1TKzycwZAdaG0CPm2L3HC3ykakpc_cUaHgIULx_Q3Hvp5Oc88oc0I4aTVSu4pjk0NJ6EXYIMPSSRVrY5jXuwlZ9Pe7Yx8u-KzACfG_ivOtdlLVkGTuhNT7oB3k6t8a86O-0u_uyUPm1AbJeTqUDv3TyyJGS-66v_nPYecnOu3zimxZo3H8qRTWC_nggaRD2dpOwfP_upUgpURsqgpasgDfQnNBBJjS1OMUjunOnLfLYkg1ZBh9ooODXHLsjTE5JV8vUVqBozHjF1T1rsrx1UZpgkP-AOK_x4PyTuj-K16Da2Kpjj4aMXnj4exTIYPbLJTFeoX19Fu_3t96Fw
+
+{
+    "from":"el_sorprendente_api_gateway",
+    "to":"alexis.araujo@triara.com,jose.hernandez@triara.com,david.gomez@triara.com",
+    "subject":"Mensaje de prueba",
+    "body":"Mensaje de prueba desde el Api Gateway con Lumen el dia 17/11/2021"
+}
+
+### envio de correo por medio de texto plano
+POST http://itoc-gateway.test/notifications/email/text
+Content-Type: application/json
+Authorization: Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiJ9.eyJhdWQiOiIxIiwianRpIjoiODc1YWU0MTY3NDI3ODhjZjBkNmQ0NWI3ZmE5ZjljNjZhMTMwYmQ3Y2UyZGEyNjBmM2Y5OTExMmFiNzkyMjIwN2VhYmIyZTVhYWU2NWFiMzkiLCJpYXQiOjE2NDA5NzEzNjguNzM3NjMxLCJuYmYiOjE2NDA5NzEzNjguNzM3NjM2LCJleHAiOjE2NzI1MDczNjguNzE5MTQzLCJzdWIiOiIiLCJzY29wZXMiOltdfQ.EEjbe-2O5aGGQIrGotvl7Tj5OgLO6Gp5a_TyxPqrwKD_JRibbRAqOU9FfV04KGJRriLXwc-V46l9IXPqwEsXUJhZ9_64683JiidQVTEBF0bvDJSn4X98AZ1Z1AzFlnWjOLrN9pS0aG9w4U6Gjgy2KDwB0sGSH4GnKV1BixxeXaHxwSOUREtxyo1z4MxpbKsam8MZQziqk3-xJdv00ff-pdoy_D5gLTwkIOEQRJF7SIZV3WHcZMSCIDNBfcOR8pLEfm8Nuj5sP3MomOi3w6hSZWiIuJvUaYHPBablrCpCe8dtXfQavft8W9xLmxJPqW975HjNpc0JF8OmWgoCfTr6ah1pr5R1TKzycwZAdaG0CPm2L3HC3ykakpc_cUaHgIULx_Q3Hvp5Oc88oc0I4aTVSu4pjk0NJ6EXYIMPSSRVrY5jXuwlZ9Pe7Yx8u-KzACfG_ivOtdlLVkGTuhNT7oB3k6t8a86O-0u_uyUPm1AbJeTqUDv3TyyJGS-66v_nPYecnOu3zimxZo3H8qRTWC_nggaRD2dpOwfP_upUgpURsqgpasgDfQnNBBJjS1OMUjunOnLfLYkg1ZBh9ooODXHLsjTE5JV8vUVqBozHjF1T1rsrx1UZpgkP-AOK_x4PyTuj-K16Da2Kpjj4aMXnj4exTIYPbLJTFeoX19Fu_3t96Fw
 
 {
     "from":"el_sorprendente_api_gateway",
@@ -10,7 +33,7 @@ Content-Type: application/json
 }
 
 ### envio de correo por medio de texto/codigo HTML
-POST http://lumen_api_gateway.test/notifications/email/html
+POST http://itoc-gateway.test/notifications/email/html
 Content-Type: application/json
 
 {
@@ -21,7 +44,7 @@ Content-Type: application/json
 }
 
 ### envio de SNMP Trap
-POST http://lumen_api_gateway.test/notifications/snmptrap
+POST http://itoc-gateway.test/notifications/snmptrap
 Content-Type: application/json
 
 {
@@ -33,7 +56,7 @@ Content-Type: application/json
 }
 
 ### envio notificacion al ITOC App
-POST http://lumen_api_gateway.test/notifications/phone/app
+POST http://itoc-gateway.test/notifications/phone/app
 Content-Type: application/json
 
 {
@@ -45,7 +68,7 @@ Content-Type: application/json
 }
 
 ### Prueba de llamada
-POST http://lumen_api_gateway.test/notifications/phone/call
+POST http://itoc-gateway.test/notifications/phone/call
 Content-Type: application/json
 
 {
@@ -53,10 +76,10 @@ Content-Type: application/json
 }
 
 ### Prueba estatus api
-GET http://lumen_api_gateway.test/apiservices/login/echoping
+GET http://itoc-gateway.test/apiservices/login/echoping
 
 ### Prueba envio de correo con api David Email con texto plano
-POST http://lumen_api_gateway.test/notificacion/mail/solotexto
+POST http://itoc-gateway.test/notificacion/mail/solotexto
 Content-Type: application/json
 
 {
@@ -67,7 +90,7 @@ Content-Type: application/json
 }
 
 ### Prueba envio de correo con api David Email con texto HTML
-POST http://lumen_api_gateway.test/notificacion/mail/avanzado
+POST http://itoc-gateway.test/notificacion/mail/avanzado
 Content-Type: application/json
 
 {

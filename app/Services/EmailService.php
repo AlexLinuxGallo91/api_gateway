@@ -9,10 +9,12 @@ class EmailService
     use ConsumesExternalService;
 
     public $baseUri;
+    public $secret;
 
     public function __construct()
     {
         $this->baseUri = config('services.itoc_email_api.base_uri');
+        $this->secret = config('services.itoc_email_api.secret');
     }
 
     public function sendEmailText($data){

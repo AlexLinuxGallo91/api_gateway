@@ -13,6 +13,11 @@
 |
 */
 
+$router->group(['middleware' => 'client.credentials'], function() use ($router){
+
+// prueba de autenticacion por token y llave secreta al endpoint
+$router->get('/gateway/secret', 'SecretController@sendSecret');
+
 // rutas para la api del correo
 $router->post('/notifications/email/text', 'EmailController@sendEmailText');
 $router->post('/notifications/email/html', 'EmailController@sendEmailHtml');
@@ -27,4 +32,5 @@ $router->get('/apiservices/login/echoping', 'ItocApiController@getStatus');
 $router->post('/notificacion/mail/solotexto', 'ApiEmailController@sendEmailText');
 $router->post('/notificacion/mail/avanzado', 'ApiEmailController@sendEmailHtml');
 
+});
 
